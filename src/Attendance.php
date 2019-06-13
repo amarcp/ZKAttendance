@@ -39,6 +39,14 @@ class Attendance {
 		return $this->time;
 	}
 
+	public function getDate(){
+		return $this->time->format("Y-m-d");
+	}
+
+	public function getTime(){
+		return $this->time->format("H:i:s");
+	}
+
 	public function __construct($userId, DateTime $dateTime, $type, $status){
 		$this->userId = $userId;
 		$this->time = $dateTime;
