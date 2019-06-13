@@ -1,0 +1,20 @@
+{
+    "name": "amarcp/ZKAttendance",
+    "description": "PHP library for communication with ZKTeco Attendance Machine",
+    "homepage": "https://github.com/amarcp/ZKAttendance",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amar CP",
+            "email": "cpamarcp@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": {"ZKAttendance\\": "src/"}
+    }
+}

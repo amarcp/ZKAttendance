@@ -1,4 +1,5 @@
 <?php 
+namespace ZKAttendance;
 error_reporting(0);
 
 define('CMD_CONNECT', 1000);
