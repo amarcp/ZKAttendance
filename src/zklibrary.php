@@ -1,5 +1,6 @@
 <?php 
 namespace ZKAttendance;
+use \DateTime;
 error_reporting(0);
 
 define('CMD_CONNECT', 1000);
@@ -52,6 +53,8 @@ define('LEVEL_SUPERMANAGER', 14); // 0000 1110
 
 class ZKLibrary {
 	public $ip = null;
+	public $sec = 30;
+	public $usec = 300;
 	public $port = null;
 	public $socket = null;
 	public $session_id = 0;
@@ -213,8 +216,10 @@ class ZKLibrary {
 		$month = $data % 12+1;
 		$data = $data / 12;
 		$year = floor( $data + 2000 );
-		$d = date("Y-m-d H:i:s", strtotime($year.'-'.$month.'-'.$day.' '.$hour.':'.$minute.':'.$second));
-		return $d;
+		$decoded = new DateTime();
+		$decoded->setDate($year, $month, $day)
+			    ->setTime($hour, $minute, $second);
+		return $decoded;
 
 	}
 	private function checkSum($p)
