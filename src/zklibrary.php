@@ -898,7 +898,7 @@ class ZKLibrary {
 					$uid = $u1+($u2*256);
 					$id = str_replace("\0", '', hex2bin(substr($u[1], 8, 16)));
 					$state = hexdec(substr( $u[1], 56, 2 ) );*/
-					$uid = trim(substr( $attendancedata, 4, 14 ), "\x0");        
+					$uid = trim(substr( $attendance_data, 4, 14 ), "\x0");        
 	                $id = intval( str_replace("\0", '', hex2bin( substr($u[1], 6, 8) ) ) );
 	                $state = hexdec( substr( $u[1], 56, 2 ) );
 					$timestamp = $this->decodeTime(hexdec($this->reverseHex(substr($u[1], 58, 8))));
