@@ -1,5 +1,5 @@
 {
-    "name": "amarcp/ZKAttendance",
+    "name": "amarcp/zkattendance",
     "description": "PHP library for communication with ZKTeco Attendance Machine",
     "homepage": "https://github.com/amarcp/ZKAttendance",
     "type": "library",
