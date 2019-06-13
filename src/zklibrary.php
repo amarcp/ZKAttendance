@@ -693,7 +693,8 @@ class ZKLibrary {
 					{
 						$name = $uid;
 					}
-					$users[$uid] = array($userid, $name, intval($role), $password);
+					//$users[$uid] = array($userid, $name, intval($role), $password);
+					$users[$uid] = new User($userid,intval($role),$password,$name,,,,$uid);
 					$user_data = substr($user_data, 72);
 				}
 			}
@@ -892,8 +893,9 @@ class ZKLibrary {
 					$uid = $u1+($u2*256);
 					$id = str_replace("\0", '', hex2bin(substr($u[1], 8, 16)));
 					$state = hexdec(substr( $u[1], 56, 2 ) );
-					$timestamp = $this->decodeTime(hexdec($this->reverseHex(substr($u[1], 58, 8)))); 
-					array_push($attendance, array($uid, $id, $state, $timestamp));
+					$timestamp = $this->decodeTime(hexdec($this->reverseHex(substr($u[1], 58, 8))));
+					$attendance[] = new Attendance($uid, $timestamp, $id, $state ); 
+					#array_push($attendance, array($uid, $id, $state, $timestamp));
 					$attendance_data = substr($attendance_data, 40 );
 				}
 			}
