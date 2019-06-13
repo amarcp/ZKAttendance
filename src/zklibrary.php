@@ -699,7 +699,7 @@ class ZKLibrary {
 						$name = $uid;
 					}
 					//$users[$uid] = array($userid, $name, intval($role), $password);
-					$users[$uid] = new User(intval($role),$userid,$password,$name,'','','',$uid);
+					$users[$uid] = new User($uid,intval($role),$password,$name,'','','',$userid);
 					$user_data = substr($user_data, 72);
 				}
 			}
