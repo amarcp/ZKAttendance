@@ -893,11 +893,14 @@ class ZKLibrary {
 				while(strlen($attendance_data) > 40) 
 				{
 					$u = unpack('H78', substr($attendance_data, 0, 39));
-					$u1 = hexdec(substr($u[1], 4, 2));
+					/*$u1 = hexdec(substr($u[1], 4, 2));
 					$u2 = hexdec(substr($u[1], 6, 2));
 					$uid = $u1+($u2*256);
 					$id = str_replace("\0", '', hex2bin(substr($u[1], 8, 16)));
-					$state = hexdec(substr( $u[1], 56, 2 ) );
+					$state = hexdec(substr( $u[1], 56, 2 ) );*/
+					$uid = trim(substr( $attendancedata, 4, 14 ), "\x0");        
+	                $id = intval( str_replace("\0", '', hex2bin( substr($u[1], 6, 8) ) ) );
+	                $state = hexdec( substr( $u[1], 56, 2 ) );
 					$timestamp = $this->decodeTime(hexdec($this->reverseHex(substr($u[1], 58, 8))));
 					$attendance[] = new Attendance($uid, $timestamp, $id, $state ); 
 					#array_push($attendance, array($uid, $id, $state, $timestamp));
